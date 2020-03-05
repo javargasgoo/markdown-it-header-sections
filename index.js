@@ -13,13 +13,6 @@ module.exports = function headerSections(md){
       return t;
     }
 
-    function openSection(attrs){
-      var t = new Token('section_open', 'section', 1);
-      t.block = true;
-      t.attrs = attrs;
-      return t;
-    }
-
     function closeSections(from, to) {
       // close one below to
       while (from !== (to-1)) {
@@ -38,7 +31,6 @@ module.exports = function headerSections(md){
         if (level <= prevHeaderLevel) {
           sectionLevel = closeSections(sectionLevel, level);
         }
-        tokens.push(openSection(token.attrs));
         sectionLevel++;
         prevHeaderLevel = level;
       }
